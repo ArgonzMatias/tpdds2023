@@ -1,0 +1,40 @@
+{{#partial "contenido" }}
+    <link rel="stylesheet" href="/css/estiloTablas.css">
+        
+    <div class="preguntas">
+        <h3> ¿Quienes somos? </h3>
+        <p> Somos alumnos de la UTN FRBA, de la materia Diseño de Sistemas.
+            Somos el grupo 6, formado por Julian Ignacio Ruival, Joaquin Maiolo,
+            Matias Argonz, Luca Sosa Cuenca y Matias Ezequiel Nuñez. Somos el grupo 6.</p>
+        <h3> ¿Que es M.E.S.? </h3>
+        <p> M.E.S. es una sigla que representa Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos.
+            Esto fue nuestro trabajo practico anual, que consiste en un servicio brindado al publico para informar a distintas
+            comunidades incidentes que ocurren en la via publica, para facilitar su vida. Para mas informacion, visitar, la
+             consigna que se encuentra en la parte superior de la pantalla.
+        </p>
+        <h3> ¿Que es un incidente? </h3>
+        <p> Cualquier tipo de servicio que puede estar inhabilitado por cualquier razon. Un usuario puede notificarlo si es parte
+            de una comunidad interesada en el servicio en cuestion. Solamente debe adjuntar un detalle para explicar el incidente.
+        </p>
+        <h3> ¿Que es cerrar un incidente? </h3>
+        <p> Cuando un usuario este proximo al servicio afectado por el incidente, puede acercarse y verificar si la problematica sigue presente o no.
+            En caso de que el incidente este resuelto, puede acceder al la pagina para notificar que se ha cerrado el incidente.
+        </p>
+    </div>
+
+<script>
+
+    let sideBar = document.querySelector(".sideBar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    let homeSection = document.querySelector(".home-section");
+    console.log(sideBar);
+    
+    sidebarBtn.addEventListener("click", ()=>{
+        sideBar.classList.toggle("close")
+        homeSection.classList.toggle("close");
+    });
+    
+    </script>
+
+{{/partial}}
+{{> templates/base }}

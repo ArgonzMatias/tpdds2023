@@ -1,0 +1,180 @@
+
+.sideBar{
+    padding-top: 10px;
+    
+    padding-bottom: 10px;
+    background-color:#502202;
+    color:#FEF5EB;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    font-weight: 500;
+    position: fixed;
+    height: 100%;
+    width: 20%;
+    text-align: center;
+    line-height: 50px;
+    top:0;
+    left:0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .sideBar.close .sideBar,
+  .sideBar.close .icon-container,
+  .sideBar.close .nav-links,
+  .sideBar.close .bx bx-menu  {
+    
+    animation: 1s cubic-bezier(0.25, 1, 0.30, 1) wipe-in-right both;
+    animation: 1s cubic-bezier(0.25, 1, 0.30, 1) wipe-out-left both;
+    
+
+  }
+  .sideBar.close{
+    background-color: transparent;
+  }
+  
+  
+  .icon-container{
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-container i{
+    font-size: large;
+    background: #502202;
+    text-align: center;
+  }
+  
+  .logo_name{
+    padding-left: 5px;
+    text-align: center;
+  }
+  
+  
+  .bx bx-menu{
+    font-size: large;
+    background: #502202;
+    text-align: center;
+  }
+  
+  .bx bxs-right-arrow{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .sideBar ul li{
+    padding-top: 15px;
+    padding-bottom: 15px ;
+    color: #FFF3EB;
+  } 
+  .sideBar .nav-links{
+    background-color: #9F4504;
+    position: relative; 
+    list-style: none;
+    flex: 1;
+  }
+  
+  
+  
+  .sideBar .nav-links li i{
+    height: 100%;
+    width: 20%;
+    
+    line-height: 50px;
+    display: center;
+  }
+  
+  .sideBar .nav-links li i a{
+    display: flex;
+    align-items: center;
+  }
+  
+  .sideBar .profile-details{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    font-size: medium;
+    background-color: #C75605;
+    width: 20%;
+    flex:0;
+  }
+   
+  .sideBar .profile-details i{
+    font-size: medium;
+    object-fit: cover;
+    margin : 0 14px 0 12px;
+    padding: 10px;
+  }
+  
+  .sideBar .profile-details .profile-content i.bx-user-circle {
+    font-size: 2rem; 
+  }
+  
+  
+  
+  .home-section{
+    position: relative;
+    background: #FBD1A2;
+    height: 1;
+    left: 20%;
+    width: 80%;
+    transition: all 0.5s ease ;
+  }
+  
+  .sideBar.close ~ .home-section{
+    left: 0px;
+    width: (100% - 78px);
+  }
+  
+  .home-section .home-content{
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .home-section .home-content .bx-menu,
+  .home-section .home-content .text{
+    color: #FFF3EB;
+    font: 10px;
+  }
+  
+  .home-section .home-content .bx-menu{
+    margin: 0 15px;
+  }
+  
+  .home-section .home-content .text{
+    color: #FFF3EB;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+
+  @keyframes wipe-in-right {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  
+  [transition-style="in:wipe:right"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+  }
+
+
+  @keyframes wipe-out-left {
+    from {
+      clip-path: inset(0 0 0 0);
+    }
+    to {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+  
+  [transition-style="out:wipe:left"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-out-left both;
+  }

@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+
+
+<form method="POST" action="/incidentes">
+	Apertura de incidente <br /> Detalle: <input type="text" name="detalle">
+	<input type="submit" />
+</form>
+
+<table>
+
+	<tr>
+		<th>Detalle
+		</th>
+	</tr>
+	{{#each incidentes}}
+	<tr>
+		<td>{{detalle}}</td>
+		<td><a href="/incidentes/{{id}}"> detalle </a></td>
+	</tr>
+	{{/each}}
+
+</table>
+
+</html>

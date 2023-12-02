@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <div class="header-container">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/estiloMenu.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/css/estiloTablas.css">
+
+        <title> M.E.S - Grupo 6 - Listado Incidentes </title>
+    </div>
+
+</head>
+
+
+<body>
+
+<!-- logica de menu -->
+
+<div class= "sideBar close">
+    <div class= "sideBar">
+        <div class="logo">
+            <i class='bx bxs-train' ></i>
+            <span class="logo_name">
+                        M.E.S.
+                    </span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="/incidentes/crear">
+                    <i class='bx bx-edit-alt'></i>
+                    <span class="link_name"> Abrir Incidente </span>
+                </a>
+            </li>
+            <li>
+                <a href="/incidentes/cerrar">
+                    <i class='bx bx-window-close'></i>
+                    <span class="link_name"> Cerrar Incidente </span>
+                </a>
+            </li>
+            <li>
+                <a href="/incidentes/sugerencias">
+                    <i class='bx bx-error-alt'></i>
+                    <span class="link_name"> Incidentes Pendientes </span>
+                </a>
+            </li>
+            <li>
+                <a href="/incidentes">
+                    <i class='bx bx-table' ></i>
+                    <span class="link_name"> Incidentes </span>
+                </a>
+            </li>
+            <li>
+                <a href="/cargarEntidad">
+                    <i class='bx bx-upload'></i>
+                    <span class="link_name"> Cargar Entidades </span>
+                </a>
+            </li>
+            <li>
+                <a href="/ranking">
+                    <i class='bx bxs-pie-chart-alt-2'></i>
+                    <span class="link_name"> Rankings </span>
+                </a>
+            </li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <i class='bx bx-user-circle'></i>
+                </div>
+                <div class="name-job">
+                    <a class="profile_name" href="/admin" > Mi Perfil </a>
+                </div>
+                <a href="/"> Log Out </a>
+            </div>
+        </ul>
+    </div>
+</div>
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <span class="text"> Menu </span>
+    </div>
+</section>
+
+<header>
+    <div class="header-container">
+        <h1> Incidentes </h1>
+        <nav>
+            <ul>
+                <li>
+                    <i class='bx bx-question-mark'></i>
+                    <a href="/faq"> FAQ </a>
+                </li>
+                <li>
+                    <i class='bx bxs-file-doc'></i>
+                    <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit"> Consigna </a>
+                </li>
+                <li>
+                    <i class='bx bxs-home-alt-2'></i>
+                    <a href="/incidentes"> Incidentes </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="table-container">
+        <table>
+        <tbody>
+        <caption> Listado de Empresas Cargadas </caption>
+        <tr class="info-tabla">
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+
+        {{#each empresas}}
+            <tr>
+                <td data-cell="Codigo">{{this.codigo}}</td>
+                <td data-cell="Nombre">{{this.nombre}}</td>
+                <td data-cell="Correo">{{this.usuario.correoElectronico}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+        </table>
+    </div>
+</div>
+<div class="main-container">
+    <div class="table-container">
+        <table>
+        <tbody>
+        <caption> Listado de Organismos de control cargados </caption>
+        <tr class="info-tabla">
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+
+        {{#each organismos}}
+            <tr>
+                <td data-cell="Codigo">{{this.codigo}}</td>
+                <td data-cell="Nombre">{{this.nombre}}</td>
+                <td data-cell="Correo">{{this.usuario.correoElectronico}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+        const checkbox = document.getElementById('checkCierre');
+
+
+        const tableRows = document.querySelectorAll('table tr');
+
+
+        checkbox.addEventListener('change', function () {
+        const showOpenIncidents = this.checked;
+
+
+        tableRows.forEach(row => {
+            const estadoCell = row.querySelector('[data-cell="Estado"]');
+            if (estadoCell) {
+                const isIncidentOpen = estadoCell.textContent.trim() === 'Abierto';
+                estadoCell.textContent = isIncidentOpen ? 'Abierto' : 'Cerrado';
+                row.style.display = showOpenIncidents ? (isIncidentOpen ? 'table-row' : 'none') : 'table-row';
+            }
+        });
+    });
+    </script>
+<script>
+
+            let sideBar = document.querySelector(".sideBar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            let homeSection = document.querySelector(".home-section");
+            console.log(sideBar);
+
+            sidebarBtn.addEventListener("click", ()=>{
+                sideBar.classList.toggle("close")
+                homeSection.classList.toggle("close");
+            });
+
+            </script>
+</body>
+</html>

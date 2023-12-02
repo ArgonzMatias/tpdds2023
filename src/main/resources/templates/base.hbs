@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <div class="header-container">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/estiloMenu.css">
+        <link rel="stylesheet" href="css/estiloMenu.css">
+        <link rel="stylesheet" href="/css/estiloTablas.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <title> M.E.S - Grupo 6 - Listado Incidentes </title>
+        </div>
+        
+    </head>
+
+
+    <body>
+
+        <!-- logica de menu -->
+
+        <div class= "sideBar close">
+            <div class= "sideBar">
+                <div class="logo">
+                    <i class='bx bxs-train' ></i>
+                    <span class="logo_name">
+                        M.E.S.
+                    </span>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="/incidentes/crear/">
+                            <i class='bx bx-edit-alt'></i>
+                            <span class="link_name"> Abrir Incidente </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/incidentes/cerrar">
+                            <i class='bx bx-window-close'></i>
+                            <span class="link_name"> Cerrar Incidente </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/incidentes/sugerencias">
+                            <i class='bx bx-error-alt'></i>
+                            <span class="link_name"> Incidentes Sugeridos </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/incidentes">
+                            <i class='bx bx-table' ></i>
+                            <span class="link_name"> Incidentes </span>
+                        </a>
+                    </li>
+                    {{#if admin}}
+                        <li>
+                            <a href="/usuarios/crear">
+                                <i class='bx bx-edit-alt'></i>
+                                <span class="link_name"> Crear Usuario </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    <li>
+                        <a href="/cargarEntidad">
+                            <i class='bx bx-upload'></i>
+                            <span class="link_name"> Cargar Entidades </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ranking">
+                            <i class='bx bxs-pie-chart-alt-2'></i>
+                            <span class="link_name"> Rankings </span>
+                        </a>
+                    </li>
+                    <div class="profile-details">
+                        <div class="profile-content">
+                            <i class='bx bx-user-circle'></i>  
+                        </div>
+                        <div class="name-job">
+                            <a class="profile_name" href="/admin" > Mi Perfil </a>
+                        </div>
+                        <a href="/logout"> Log Out </a>
+                    </div>
+                </ul>    
+            </div>
+        </div>
+            <section class="home-section">
+                <div class="home-content">
+                    <i class='bx bx-menu'></i>
+                    <span class="text"> Menu </span>
+                </div>
+            </section>
+        
+
+        {{#block "contenido"}}
+        {{/block}}
+        <script>
+
+            let sideBar = document.querySelector(".sideBar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            let homeSection = document.querySelector(".home-section");
+            console.log(sideBar);
+
+            sidebarBtn.addEventListener("click", ()=>{
+                sideBar.classList.toggle("close")
+                homeSection.classList.toggle("close");
+            });
+
+            </script>
+
+    </body>
+</html>

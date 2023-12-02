@@ -1,0 +1,66 @@
+{{#partial "contenido" }}
+            <link rel="stylesheet" href="/css/estiloPaginaInicio.css">
+
+        <header>
+            <div class="header-container">
+                <h1> Ingrese los datos del incidente </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <i class='bx bx-question-mark'></i>
+                             <a href="/faq"> FAQ </a>
+                        </li>
+                        <li>
+                            <i class='bx bxs-file-doc'></i>
+                            <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit"> Consigna </a>
+                         </li>
+                        <li>
+                            <i class='bx bxs-home-alt-2'></i>
+                            <a href="/incidentes"> Incidentes </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="form-container">
+                <form class="" method="post" action="/incidentes">
+
+                    <div class="grid-item">
+                        <label for=""> ¿Donde sucedio el Incidente? </label>
+                        <select name="prestacion" id="prestacion">
+                            <option value="" disabled selected> Prestacion de servicio afectada </option>
+                            {{#each prestaciones}}
+                                <option value="{{this.id}}">{{this.servicio.nombre}} {{this.establecimiento.nombre}}</option>
+                            {{/each}}
+                        </select>
+
+                    </div>
+                    <div class="grid-item">
+                        <label for="contraNueva"> De mas detalles para facilitar su resolucion </label>
+                        <textarea id="detalle" name="detalle" placeholder="Detalle"></textarea>
+                    </div>
+
+                    <button type="submit" class="boton" name="button"  id="enviar"> Notificar Incidente </button>
+                </form>
+            </div>
+        </div>
+
+<script>
+
+    let sideBar = document.querySelector(".sideBar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    let homeSection = document.querySelector(".home-section");
+    console.log(sideBar);
+
+    sidebarBtn.addEventListener("click", ()=>{
+        sideBar.classList.toggle("close")
+        homeSection.classList.toggle("close");
+    });
+
+    </script>
+
+    {{/partial}}
+    {{> templates/base }}

@@ -1,0 +1,102 @@
+{{#partial "contenido" }}
+    <link rel="stylesheet" href="/css/estiloPaginaInicio.css">
+
+    <header>
+        <div class="header-container">
+            <h1> Ingrese los datos del Usuario </h1>
+            <nav>
+                <ul>
+                    <li>
+                        <i class='bx bx-question-mark'></i>
+                        <a href="/faq"> FAQ </a>
+                    </li>
+                    <li>
+                        <i class='bx bxs-file-doc'></i>
+                        <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit">
+                            Consigna </a>
+                    </li>
+                    <li>
+                        <i class='bx bxs-home-alt-2'></i>
+                        <a href="/incidentes"> Incidentes </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="form-container">
+            <form class="" method="post" onsubmit="event.preventDefault(); crearUsuario();">
+
+                <div class="grid-item">
+                    <label for="">Ingrese el correo del usuario</label>
+                    <input type="text" name="correo" placeholder="Correo" id="correo">
+                </div>
+                <div class="grid-item">
+                    <label for="">Ingrese la cotrasenia del usuario</label>
+                    <input type="text" name="contrasenia" placeholder="Contrasenia"
+                           id="contrasenia">
+                </div>
+                <div class="grid-item">
+                    <label for=""> Seleccione el rol del usuario </label>
+                    <select id="rolSelect">
+                        <option value="" disabled selected> RolUsuario</option>
+                        {{#each roles}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="grid-item">
+                    <label for="">Ingrese el numero del usuario</label>
+                    <input type="text" name="numero" placeholder="Numero" id="numero">
+                </div>
+
+                <div id="error-message" style="color: red; margin-top: 10px;"> </div>
+                <div id="error-message" style="color: red; margin-top: 10px;"> </div>
+
+                <button type="submit" class="boton" name="button" id="enviar">Crear Usuario</button>
+            </form>
+            <div id="error-message" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
+
+    <script>
+        function crearUsuario() {
+            const correo = document.getElementById("correo").value;
+            const contrasenia = document.getElementById("contrasenia").value;
+            const rol = document.getElementById("rolSelect").value;
+            const numero = document.getElementById("numero").value;
+            fetch(`/usuarios`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    correo: correo,
+                    contrasenia: contrasenia,
+                    rol: rol,
+                    numero: numero
+                })
+            })
+                    .then(response => {
+                        if (!response.ok) {
+                            // Si la respuesta del servidor no es exitosa, mostrar el mensaje de error
+                            return response.text().then(errorMessage => {
+                                throw new Error(`Error en la creación del usuario: ${errorMessage}`);
+                            });
+                        }
+                        // Si el usuario se crea correctamente, mostrar el mensaje de éxito
+                        console.log("Usuario creado con éxito.")
+                        document.getElementById("error-message").style.color = "green";
+                        document.getElementById("error-message").innerText = "Usuario creado con éxito.";
+                    })
+                    .catch(error => {
+                        console.error("Error: " + error.message);
+                        document.getElementById("error-message").innerText = error.message;
+                    });
+        }
+    </script>
+
+{{/partial}}
+{{> templates/base }}

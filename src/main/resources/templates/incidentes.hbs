@@ -1,0 +1,104 @@
+{{#partial "contenido" }}
+
+<header>
+    <div class="header-container">
+        <h1> Incidentes </h1>
+        <nav>
+            <ul>
+                <li>
+                    <i class='bx bx-question-mark'></i>
+                    <a href="/faq"> FAQ </a>
+                </li>
+                <li>
+                    <i class='bx bxs-file-doc'></i>
+                    <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit"> Consigna </a>
+                </li>
+                <li>
+                    <i class='bx bxs-home-alt-2'></i>
+                    <a href="/incidentes"> Incidentes </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<div class="main-container">
+    <div class = "check">
+        <label for="" class = "checkBox"> Incidentes Abiertos </label>
+        <input id="checkCierre" class="ceckCierre" type="checkbox" placeholder="Incidentes Abiertos">
+    </div>
+    <div class="table-container">
+        <table>
+        <tbody>
+        <caption> Listado de Incidentes </caption>
+        <tr class="info-tabla">
+            <th>Incidente</th>
+            <th>Estado</th>
+            <th>Servicio</th>
+            <th>Establecimiento</th>
+            <th>Entidad</th>
+            <th>Fecha de Apretura</th>
+            <th>Fecha de Cierre</th>
+        </tr>
+        {{#each incidentes}}
+            <tr>
+                <td data-cell="Incidente">{{this.detalle}}</td>
+                {{#if this.estaResuelto}}
+                <td data-cell="Estado">Cerrado</td>
+                {{else}}
+                <td data-cell="Estado">Abierto</td>
+                {{/if}}
+                <td data-cell="Servicio">{{this.prestacionDeServicio.servicio.nombre}}</td>
+                <td data-cell="Establecimiento">{{this.prestacionDeServicio.establecimiento.nombre}}</td>
+                <td data-cell="Entidad">{{this.prestacionDeServicio.establecimiento.entidad.nombre}}</td>
+                <td data-cell="Fecha Apertura">{{this.fechaApertura}}</td>
+                <td data-cell="Fecha Cierre">{{this.fechaCierre}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+        const checkbox = document.getElementById('checkCierre');
+
+
+        const tableRows = document.querySelectorAll('table tr');
+
+
+        checkbox.addEventListener('change', function () {
+        const showOpenIncidents = this.checked;
+
+
+        tableRows.forEach(row => {
+            const estadoCell = row.querySelector('[data-cell="Estado"]');
+            if (estadoCell)  {
+            // Determine the original state of the incident
+             const isIncidentOpen = estadoCell.textContent.trim().toLowerCase() === 'abierto';
+
+            // Update the row display based on the checkbox state and original incident state
+            row.style.display = showOpenIncidents ? (isIncidentOpen ? 'table-row' : 'none') : 'table-row';
+    }
+        });
+    });
+    </script>
+<script>
+
+            let sideBar = document.querySelector(".sideBar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            let homeSection = document.querySelector(".home-section");
+            console.log(sideBar);
+
+            sidebarBtn.addEventListener("click", ()=>{
+                sideBar.classList.toggle("close")
+                homeSection.classList.toggle("close");
+            });
+
+            </script>
+{{/partial}}
+{{> templates/base }}

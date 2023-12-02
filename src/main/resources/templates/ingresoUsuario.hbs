@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <div class="header-container">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/estiloPaginaInicio.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+
+        <title> M.E.S - Grupo 6 - pagina Inicio </title>
+        </div>
+        
+    </head>
+
+
+    <body>
+        <header>
+            <div class="header-container">
+                <h1> ¡Hola <span id="saludo">, ingrese su usuario!</span></h1>
+                <nav>
+                    <ul>
+                        <li><a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit">Consigna</a>  </li>
+                    </ul> 
+                </nav>
+                
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="form-container">
+                <form class="" action="/login" method="POST">
+                    
+                <div class="grid-item">
+                    <label for="">Ingrese su usuario</label>
+                    <input type="text" name="username" placeholder="Usuario" id="usuarioNuevo">
+
+                </div>
+                <div class="grid-item">
+                    <label for="contraNueva">Ingrese su contraseña</label>
+                    <input type="password" name="password" placeholder="Contraseña" id="contraNueva" >
+                </div>
+                
+                
+                <button type="submit" class="boton" name="button"  id="enviar"> Iniciar Sesion </button>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>
+<script src="js/function.js" charset="utf-8"></script>

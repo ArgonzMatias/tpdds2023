@@ -1,0 +1,109 @@
+{{#partial "contenido" }}
+        <link rel="stylesheet" href="/css/estiloPaginaInicio.css">
+
+        <header>
+            <div class="header-container">
+                <h1> Adminstracion de Usuarios </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <i class='bx bx-question-mark'></i>
+                             <a href="/faq"> FAQ </a>
+                        </li>
+                        <li> 
+                            <i class='bx bxs-file-doc'></i>
+                            <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit"> Consigna </a>
+                         </li>
+                        <li>
+                            <i class='bx bxs-home-alt-2'></i>
+                            <a href="/incidentes"> Incidentes </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </header>
+        
+
+
+
+        <div class="main-container">
+            <div class="form-container">
+                {{#if admin}}
+                <form class=""  method="post">
+                    
+                    <div class="grid-item">
+                        <div class="select-container">
+                            <label for=""> Eliminar un miembro de una comunidad </label>
+                            <select> 
+                                    <option value="" disabled selected> Miembro </option>
+                                {{#each comunidad}}
+                                    <option value={{this.miembro}}>{{this.miembro}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="select-container">
+                            <select> 
+                                <option value="" disabled selected> Comunidad </option>
+                                {{#each comunidad}}
+                                    <option value={{this.nombre}} placeholder="Comunidad">{{this.nombre}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <button type="button" class="boton" name="button"  id="enviar"> Eliminar </button>
+                {{/if}}
+                <form class=""  method="post">
+                    
+                    <div class="grid-item">
+                        <label for=""> Unirme a una comunidad </label>
+                        <select>
+                            <option value="" disabled selected> Comunidad </option> 
+                            {{#each comunidad}}
+                                <option value={{this.nombre}}>{{this.nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </form>
+                
+                <button type="button" class="boton" name="button"  id="enviar"> Unirme </button>
+
+                <form class=""  method="post">
+                    
+                    <div class="grid-item">
+                        <label for=""> Salir de una comunidad </label>
+                        <select> 
+                            <option value="" disabled selected> Comunidad </option>
+                            {{#each comunidad}}
+                                <option value={{this.nombre}}>{{this.nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </form>
+                
+                <button type="button" class="boton" name="button"  id="enviar"> Salir </button>
+
+            </div>
+        </div>
+
+
+
+<script>
+
+let sideBar = document.querySelector(".sideBar");
+let sidebarBtn = document.querySelector(".bx-menu");
+let homeSection = document.querySelector(".home-section");
+console.log(sideBar);
+
+sidebarBtn.addEventListener("click", ()=>{
+    sideBar.classList.toggle("close")
+    homeSection.classList.toggle("close");
+});
+
+</script>
+
+
+{{/partial}}
+{{> templates/base }}

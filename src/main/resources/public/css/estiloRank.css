@@ -1,0 +1,165 @@
+body{
+    background-color:#FBD1A2;  /*rgb(220, 221, 189);*/
+    animation: 10s cubic-bezier(0.25, 1, 0.30, 1) circle-in-center both;
+}
+header{
+    background-color:#FC9F5B;/*rgb(241, 211, 41);*/
+    height: 200px;
+    width: 100vw;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; 
+    box-sizing: border-box; 
+  }
+
+
+header div{
+    display: block;
+    height: 100%;
+    width: 80%;
+}
+
+nav{
+    display: inline;
+    float:right
+}
+nav ul{
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+nav ul li{
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+    color:#FBD1A2;
+    margin-top: 20px;
+    margin-right: 40px;
+    font-size: large;
+    /*padding-top: 20px;*/
+    padding-right: 20px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+h1{
+    display: inline-flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight:900;
+    color:#FBD1A2;
+    /*margin-top: 10px;
+    padding-top: 20px;
+    /padding-right: 20px;*/
+    font-size: 30px;
+    padding-left: 20px;
+    margin: 10px 0;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+      flex-direction: column; 
+    }
+  
+    nav ul {
+      text-align: center; 
+    }
+  
+    nav ul li {
+      display: block; 
+      margin: 10px 0; 
+    }
+  
+    h1 {
+      font-size: 24px; 
+    }
+  }
+
+.header-container{
+    width: 70%;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding-top: 10px;
+}
+
+
+::placeholder {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(59, 65, 18);
+    font-weight:400;
+  }
+
+  @keyframes circle-in-center {
+    from {
+      clip-path: circle(0%);
+    }
+    to {
+      clip-path: circle(125%);
+    }
+  }
+  
+  [transition-style="in:circle:center"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-center both;
+  }
+
+  nav ul li a:active {
+    color:#FBD1A2; 
+}
+
+a:link {
+  color:#FBD1A2; 
+}
+
+a:visited {
+  color: #FBD1A2;
+}
+
+
+
+
+.main-container .Rankings_Opciones{
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.criterio_elegido{
+    font-family: 'Roboto', sans-serif;
+    font-weight:800;
+    font-size: large;
+    color: rgb(59, 65, 18);
+}
+
+
+.container{
+  width: 70%;
+}
+
+h2{
+  padding-top: 10px;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight:800;
+  text-align: center;
+  text-decoration:underline;
+  text-transform:uppercase;
+  color: rgb(59, 65, 18);
+}
+
+canvas{
+  width: 80%;
+}

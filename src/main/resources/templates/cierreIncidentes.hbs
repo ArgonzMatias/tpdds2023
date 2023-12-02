@@ -1,0 +1,79 @@
+{{#partial "contenido" }}
+        <link rel="stylesheet" href="/css/estiloPaginaInicio.css">
+        <header>
+            <div class="header-container">
+                <h1> Indique que incidente quiere cerrar </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <i class='bx bx-question-mark'></i>
+                             <a href="/faq"> FAQ </a>
+                        </li>
+                        <li> 
+                            <i class='bx bxs-file-doc'></i>
+                            <a href="https://docs.google.com/document/d/11rQXhiO0EiZEqh_RzlydB1GPJFIsSqRCcuQn3e2JdtE/edit"> Consigna </a>
+                         </li>
+                        <li>
+                            <i class='bx bxs-home-alt-2'></i>
+                            <a href="/incidentes"> Incidentes </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </header>
+        
+
+        <div class="main-container">
+            <div class="form-container">
+                <form class=""  method="post">
+                    
+                    <div class="grid-item">
+                        <label for=""> Seleccione el Incidente </label>
+                        <select id="incidenteSelect">
+                            <option value="" disabled selected> Incidente </option>
+                            {{#each incidentes}}
+                                <option value="{{this.id}}">{{this.detalle}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+
+                </form>
+                
+                <button type="button" class="boton" name="button"  id="enviar" onclick="cerrarIncidente()" href="/incidentes"> Cerrar Incidente </button>
+            </div>
+        </div>
+
+        <script>
+            function cerrarIncidente() {
+                const incidenteId = document.getElementById("incidenteSelect").value;
+                if (incidenteId) {
+                    const fechaCierre = new Date().toISOString(); // Obtiene la fecha actual en formato ISO 8601
+                    // Realizar una solicitud PUT al servidor para cerrar el incidente
+                    fetch(`/incidentes/${incidenteId}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            estaResuelto: true,
+                            fechaCierre: fechaCierre
+                        })
+                    })
+                            .then(response => {
+                                console.log("Incidente cerrado con éxito.")
+                                //redirecciona a pagina incidentes
+                                window.location.href = "/incidentes";;
+                            })
+                            .catch(error => {
+                                console.error("Error de red: " + error);
+                            });
+                }
+
+            }
+        </script>
+
+{{/partial}}
+{{> templates/base }}
+        
